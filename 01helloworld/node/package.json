@@ -1,0 +1,24 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "node ./src/server.js",
+    "client": "node ./src/client.js",
+    "static-server": "node ./static_codegen/server.js",
+    "static-client": "node ./static_codegen/client.js",
+    "gen": "grpc_tools_node_protoc --proto_path=../proto/ --js_out=import_style=es6,binary:../node/static_codegen/rpc/ --grpc_out=grpc_js:../node/static_codegen/rpc/ ../proto/helloworld.proto"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.12.5",
+    "@grpc/proto-loader": "^0.7.13"
+  },
+  "devDependencies": {
+    "grpc-tools": "^1.12.4"
+  }
+}
