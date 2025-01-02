@@ -1,7 +1,9 @@
 {
     "cSpell.words": [
         "APIROOT",
+        "clientv",
         "codegen",
+        "mvccpb",
         "oneofs",
         "protoc"
     ]
