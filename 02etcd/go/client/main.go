@@ -25,8 +25,8 @@ func main() {
 	r := NewEtcdResolver(EtcdAddr)
 	resolver.Register(r)
 
-	// conn, err := grpc.NewClient(r.Scheme()+"://barry/"+ServiceName, grpc.WithInsecure())
-	conn, err := grpc.NewClient(r.Scheme()+"://barry/"+ServiceName, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	address := r.Scheme() + "://barry/" + ServiceName
+	conn, err := grpc.NewClient(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		fmt.Printf("connect err : %s", err)
 	}
