@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package enum.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;enumv1";
+
+// 用户状态枚举
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;  // 默认值，必须为 0
+  USER_STATUS_ACTIVE = 1;       // 活跃用户
+  USER_STATUS_INACTIVE = 2;     // 非活跃用户
+  USER_STATUS_SUSPENDED = 3;    // 暂停用户
+  USER_STATUS_DELETED = 4;      // 已删除用户
+}
+
+// 订单状态枚举
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_PENDING = 1;     // 待处理
+  ORDER_STATUS_CONFIRMED = 2;   // 已确认
+  ORDER_STATUS_SHIPPED = 3;     // 已发货
+  ORDER_STATUS_DELIVERED = 4;   // 已送达
+  ORDER_STATUS_CANCELLED = 5;   // 已取消
+  ORDER_STATUS_REFUNDED = 6;    // 已退款
+}
+
+// 在Message中使用枚举
+message User {
+  int32 id = 1;
+  string username = 2;
+  UserStatus status = 3;        // 使用枚举类型
+}
+
+message Order {
+  string order_id = 1;
+  int32 user_id = 2;
+  OrderStatus status = 3;       // 使用枚举类型
+  double total_amount = 4;
+}

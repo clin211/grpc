@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package bool.v1;
+
+option go_package = "github.com/clin211/grpc/user/v1;boolv1";
+
+message UserSettings {
+  bool email_notifications = 1;    // 邮件通知开关
+  bool dark_mode = 2;              // 深色模式
+  bool auto_save = 3;              // 自动保存
+  bool is_premium = 4;             // 是否为高级用户
+}
+
+message SystemStatus {
+  bool is_online = 1;              // 系统是否在线
+  bool maintenance_mode = 2;       // 维护模式
+  bool backup_running = 3;         // 备份是否运行中
+}

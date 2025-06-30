@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package repeated.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;repeatedv1";
+
+message BasicRepeatedExample {
+  // 标量类型的 repeated 字段
+  repeated string tags = 1;           // 字符串数组
+  repeated int32 scores = 2;          // 整数数组
+  repeated bool flags = 3;            // 布尔值数组
+
+  // 枚举类型的 repeated 字段
+  repeated Priority priorities = 4;   // 枚举数组
+
+  // Message 类型的 repeated 字段
+  repeated Address addresses = 5;     // Message 数组
+}
+
+enum Priority {
+  PRIORITY_UNSPECIFIED = 0;
+  PRIORITY_LOW = 1;
+  PRIORITY_HIGH = 2;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+}

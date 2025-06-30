@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package userprofile.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;userprofilev1";
+
+// 用户配置 Message
+message UserProfile {
+  string username = 1;
+  string email = 2;
+
+  // 用户的多个角色
+  repeated string roles = 3;
+
+  // 用户的多个联系地址
+  repeated ContactAddress addresses = 4;
+
+  // 用户的兴趣标签
+  repeated string interests = 5;
+
+  // 用户的历史登录记录
+  repeated LoginRecord login_history = 6;
+}
+
+message ContactAddress {
+  string type = 1;        // home, work, billing
+  string street = 2;
+  string city = 3;
+  string postal_code = 4;
+  string country = 5;
+}
+
+message LoginRecord {
+  int64 timestamp = 1;
+  string ip_address = 2;
+  string user_agent = 3;
+  bool success = 4;
+}

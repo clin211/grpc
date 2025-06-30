@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package integer.v1;
+
+option go_package = "github.com/clin211/grpc/user/v1;intgerv1";
+
+message NumberTypes {
+  // 变长编码整数 - 适用于较小的正数
+  int32 user_id = 1;           // 用户ID，通常是正数
+  int64 timestamp = 2;         // 时间戳
+
+  // ZigZag 编码 - 适用于可能为负数的场景
+  sint32 temperature = 3;      // 温度，可能为负数
+  sint64 balance = 4;          // 账户余额，可能为负数
+
+  // 无符号整数 - 确保非负值
+  uint32 count = 5;            // 计数，总是非负
+  uint64 file_size = 6;        // 文件大小
+
+  // 固定长度 - 适用于大数值或需要固定宽度的场景
+  fixed32 ipv4_address = 7;    // IPv4 地址
+  fixed64 unique_id = 8;       // 全局唯一ID
+  sfixed32 coordinate_x = 9;   // 坐标值
+  sfixed64 precise_timestamp = 10; // 高精度时间戳
+}

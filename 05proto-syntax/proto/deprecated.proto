@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package deprecated.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;deprecatedv1";
+
+enum APIVersion {
+  API_VERSION_UNSPECIFIED = 0;
+  API_VERSION_V1 = 1 [deprecated = true];  // 标记为废弃
+  API_VERSION_V2 = 2 [deprecated = true];  // 标记为废弃
+  API_VERSION_V3 = 3;                      // 当前版本
+  API_VERSION_V4 = 4;                      // 最新版本
+}
+
+enum FeatureFlag {
+  FEATURE_FLAG_UNSPECIFIED = 0;
+  FEATURE_FLAG_OLD_UI = 1 [deprecated = true];
+  FEATURE_FLAG_BETA_SEARCH = 2 [deprecated = true];
+  FEATURE_FLAG_NEW_UI = 3;
+  FEATURE_FLAG_ADVANCED_SEARCH = 4;
+}

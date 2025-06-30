@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package systemconfigration.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;systemconfigrationv1";
+
+// 配置管理系统
+message SystemConfiguration {
+  // 字符串配置项
+  map<string, string> string_configs = 1;
+
+  // 数值配置项
+  map<string, int32> int_configs = 2;
+
+  // 布尔配置项
+  map<string, bool> bool_configs = 3;
+
+  // 复杂配置项
+  map<string, ConfigValue> advanced_configs = 4;
+
+  // 环境相关配置
+  map<string, EnvironmentConfig> environments = 5;
+}
+
+message ConfigValue {
+  oneof value {
+    string string_value = 1;
+    int32 int_value = 2;
+    double double_value = 3;
+    bool bool_value = 4;
+  }
+  string description = 5;
+  bool is_sensitive = 6;
+}
+
+message EnvironmentConfig {
+  string database_url = 1;
+  string api_endpoint = 2;
+  map<string, string> environment_variables = 3;
+}
+
+// 用户权限系统
+message UserPermissions {
+  string user_id = 1;
+
+  // 资源ID到权限级别的映射
+  map<string, PermissionLevel> resource_permissions = 2;
+
+  // 角色到权限的映射
+  map<string, RolePermission> role_permissions = 3;
+}
+
+enum PermissionLevel {
+  PERMISSION_LEVEL_UNSPECIFIED = 0;
+  PERMISSION_LEVEL_READ = 1;
+  PERMISSION_LEVEL_WRITE = 2;
+  PERMISSION_LEVEL_ADMIN = 3;
+}
+
+message RolePermission {
+  repeated string allowed_actions = 1;
+  repeated string denied_actions = 2;
+  int64 expires_at = 3;
+}

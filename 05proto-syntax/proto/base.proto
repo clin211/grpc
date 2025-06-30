@@ -1,0 +1,52 @@
+// 1. 文件头部注释（可选）
+/**
+ * 用户服务相关的 protobuf 定义
+ * 定义了用户管理的基本数据结构和服务接口
+ */
+
+// 2. 语法版本声明（必须）
+syntax = "proto3";
+
+// 3. 声明包
+package user.v1;
+
+// 4. 导入语句（需要则导入）
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+// 5. 选项设置（根据对应语言声明）
+option go_package = "github.com/clin211/grpc/user/v1;userv1";
+option java_package = "com.example.user.v1";
+option java_outer_classname = "UserProtos";
+
+// 6. Message定义
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message CreateUserRequest {}
+message GetUserRequest {}
+message ListUsersRequest {}
+message ListUsersResponse {}
+message UpdateUserRequest {}
+message DeleteUserRequest {}
+
+// 7. 枚举定义
+enum UserStatus {
+  USER_STATUS_UNSPECIFIED = 0;
+  USER_STATUS_ACTIVE = 1;
+  USER_STATUS_INACTIVE = 2;
+  USER_STATUS_SUSPENDED = 3;
+}
+
+// 8. 服务定义
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (User);
+  rpc GetUser(GetUserRequest) returns (User);
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (User);
+  rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty);
+}

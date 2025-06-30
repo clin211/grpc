@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package errcode.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;errcodev1";
+
+// 系统错误码枚举
+enum ErrorCode {
+  ERROR_CODE_UNSPECIFIED = 0;
+
+  // 成功状态 1-99
+  ERROR_CODE_SUCCESS = 1;
+
+  // 客户端错误 400-499
+  ERROR_CODE_BAD_REQUEST = 400;
+  ERROR_CODE_UNAUTHORIZED = 401;
+  ERROR_CODE_FORBIDDEN = 403;
+  ERROR_CODE_NOT_FOUND = 404;
+  ERROR_CODE_VALIDATION_FAILED = 422;
+
+  // 服务器错误 500-599
+  ERROR_CODE_INTERNAL_ERROR = 500;
+  ERROR_CODE_SERVICE_UNAVAILABLE = 503;
+  ERROR_CODE_TIMEOUT = 504;
+
+  // 业务错误 1000+
+  ERROR_CODE_INSUFFICIENT_BALANCE = 1001;
+  ERROR_CODE_PRODUCT_OUT_OF_STOCK = 1002;
+  ERROR_CODE_USER_SUSPENDED = 1003;
+}

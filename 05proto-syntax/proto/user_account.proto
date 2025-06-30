@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package useraccount.v1;
+
+option go_package = "github.com/clin211/grpc/user/v1;useraccountv1";
+
+message UserAccount {
+  // Singular 字段 - 总是有值（或默认值）
+  int32 user_id = 1;
+  string username = 2;
+
+  // Optional 字段 - 可以检测是否设置
+  optional string full_name = 3;
+  optional string phone = 4;
+  optional int32 birth_year = 5;
+
+  // Repeated 字段 - 数组/列表
+  repeated string email_addresses = 6;
+  repeated int32 favorite_categories = 7;
+  repeated Address addresses = 8;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string country = 3;
+  optional string postal_code = 4;
+}

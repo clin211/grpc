@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package string.v1;
+
+option go_package = "github.com/clin211/grpc/user/v1;stringv1";
+
+message UserProfile {
+  string username = 1;             // 用户名，UTF-8 字符串
+  string display_name = 2;         // 显示名称
+  string email = 3;                // 邮箱地址
+  string bio = 4;                  // 个人简介
+
+  bytes profile_image = 5;         // 头像图片数据
+  bytes encrypted_data = 6;        // 加密数据
+}
+
+message FileInfo {
+  string filename = 1;             // 文件名
+  string mime_type = 2;            // MIME 类型
+  bytes file_content = 3;          // 文件内容
+  string checksum = 4;             // 校验和（十六进制字符串）
+}

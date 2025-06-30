@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package any.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;anyv1";
+
+import "google/protobuf/any.proto";
+
+message Container {
+  string name = 1;
+  google.protobuf.Any payload = 2;  // 可以存储任何 protobuf Message
+}
+
+// 可能被存储在 Any 中的 Message 类型
+message UserInfo {
+  string username = 1;
+  string email = 2;
+  int32 age = 3;
+}
+
+message ProductInfo {
+  string product_id = 1;
+  string name = 2;
+  double price = 3;
+}
+
+message PluginConfig {
+  string plugin_name = 1;
+  string version = 2;
+  bool enabled = 3;
+
+  // 插件特定的配置，不同插件有不同的配置结构
+  google.protobuf.Any plugin_settings = 4;
+}
+
+// 不同插件的配置结构
+message DatabasePluginSettings {
+  string connection_string = 1;
+  int32 max_connections = 2;
+  int32 timeout_seconds = 3;
+}
+
+message CachePluginSettings {
+  string cache_type = 1;  // redis, memcached, memory
+  string server_address = 2;
+  int32 ttl_seconds = 3;
+  int32 max_size = 4;
+}
+
+message LoggingPluginSettings {
+  string log_level = 1;
+  string output_format = 2;  // json, text
+  repeated string output_targets = 3;  // file, console, syslog
+}
+
+// 事件存储
+message Event {
+  string event_id = 1;
+  string aggregate_id = 2;
+  string event_type = 3;
+  int64 timestamp = 4;
+  int32 version = 5;
+
+  // 事件数据，不同事件类型有不同的数据结构
+  google.protobuf.Any event_data = 6;
+
+  // 事件元数据
+  map<string, string> metadata = 7;
+}
+
+// 不同类型的事件数据
+message UserCreatedEvent {
+  string user_id = 1;
+  string username = 2;
+  string email = 3;
+  int64 created_at = 4;
+}
+
+message OrderItem {
+  string product_id = 1;
+  int32 quantity = 2;
+}
+
+message OrderPlacedEvent {
+  string order_id = 1;
+  string user_id = 2;
+  repeated OrderItem items = 3;
+  double total_amount = 4;
+  int64 placed_at = 5;
+}
+
+message PaymentProcessedEvent {
+  string payment_id = 1;
+  string order_id = 2;
+  double amount = 3;
+  string payment_method = 4;
+  bool success = 5;
+  int64 processed_at = 6;
+}

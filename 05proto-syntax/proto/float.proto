@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package float.v1;
+
+option go_package = "github.com/clin211/grpc/user/v1;floatv1";
+
+message GeographicLocation {
+  // 使用 double 提供更高精度的地理坐标
+  double latitude = 1;         // 纬度：-90.0 到 90.0
+  double longitude = 2;        // 经度：-180.0 到 180.0
+
+  // 使用 float 节省空间，适用于精度要求不高的场景
+  float altitude = 3;          // 海拔高度
+  float accuracy = 4;          // 定位精度（米）
+}
+
+message ProductInfo {
+  string name = 1;
+  double price = 2;            // 价格，需要高精度
+  float weight = 3;            // 重量，精度要求不高
+  float discount_rate = 4;     // 折扣率，0.0-1.0
+}

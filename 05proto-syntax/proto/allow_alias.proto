@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package allow_alias.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;allowaliasv1";
+
+enum Status {
+  option allow_alias = true;
+
+  STATUS_UNSPECIFIED = 0;
+  STATUS_STARTED = 1;
+  STATUS_RUNNING = 1;          // 别名：与 STARTED 值相同
+  STATUS_FINISHED = 2;
+  STATUS_DONE = 2;             // 别名：与 FINISHED 值相同
+}
+
+// 实际使用场景示例
+enum HttpStatusCode {
+  option allow_alias = true;
+
+  HTTP_STATUS_UNSPECIFIED = 0;
+  HTTP_STATUS_OK = 200;
+  HTTP_STATUS_SUCCESS = 200;   // 别名：成功的另一种表示
+  HTTP_STATUS_NOT_FOUND = 404;
+  HTTP_STATUS_ERROR = 404;     // 别名：错误的通用表示
+  HTTP_STATUS_SERVER_ERROR = 500;
+  HTTP_STATUS_INTERNAL_ERROR = 500; // 别名
+}

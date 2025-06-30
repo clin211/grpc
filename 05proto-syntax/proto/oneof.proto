@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package oneof.v1;
+
+option go_package = "github.com/clin211/grpc/proto/v1;oneofv1";
+
+message OneofExample {
+  // 普通字段
+  string name = 1;
+
+  // oneof 字段组
+  oneof contact_method {
+    string email = 2;
+    string phone = 3;
+    string address = 4;
+  }
+
+  // 另一个 oneof 组
+  oneof payment_method {
+    CreditCard credit_card = 5;
+    BankAccount bank_account = 6;
+    DigitalWallet digital_wallet = 7;
+  }
+}
+
+message CreditCard {
+  string number = 1;
+  string expiry = 2;
+  string cvv = 3;
+}
+
+message BankAccount {
+  string account_number = 1;
+  string routing_number = 2;
+}
+
+message DigitalWallet {
+  string wallet_id = 1;
+  string provider = 2;
+}
+
+message NotificationSettings {
+  bool enabled = 1;
+
+  // 通知方式只能选择一种
+  oneof delivery_method {
+    EmailSettings email = 2;
+    SMSSettings sms = 3;
+    PushSettings push = 4;
+    WebhookSettings webhook = 5;
+  }
+}
+
+message EmailSettings {
+  string email_address = 1;
+  bool html_format = 2;
+}
+
+message SMSSettings {
+  string phone_number = 1;
+  string country_code = 2;
+}
+
+message PushSettings {
+  string device_token = 1;
+  string platform = 2; // ios, android, web
+}
+
+message WebhookSettings {
+  string url = 1;
+  map<string, string> headers = 2;
+  string secret = 3;
+}

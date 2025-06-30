@@ -1,0 +1,25 @@
+syntax = "proto3"; // 指定使用 Protocol Buffers v3 语法
+
+// 生成的 Go 代码的包路径，"helloworld_grpc/helloworld" 代表 Go 包的导入路径
+option go_package = "helloworld_grpc/helloworld";
+
+package helloworld; // 定义 proto 的包名，影响 Go 代码中的 package 名称
+
+// 定义 gRPC 服务 Greeter
+service Greeter {
+  // 定义 SayHello 方法，接收 HelloRequest，返回 HelloReply
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+
+  // 定义 SayHelloAgain 方法，接收 HelloRequest，返回 HelloReply
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+}
+
+// 定义请求Message HelloRequest
+message HelloRequest {
+  string name = 1; // 客户端传递的用户名称
+}
+
+// 定义响应Message HelloReply
+message HelloReply {
+  string message = 1; // 服务器返回的问候信息
+}
