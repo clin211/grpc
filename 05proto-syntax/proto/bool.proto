@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package bool.v1;
 
-option go_package = "github.com/clin211/grpc/user/v1;boolv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message UserSettings {
   bool email_notifications = 1;    // 邮件通知开关

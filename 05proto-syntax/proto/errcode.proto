@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package errcode.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;errcodev1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 // 系统错误码枚举
 enum ErrorCode {

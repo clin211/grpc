@@ -15,7 +15,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 // 5. 选项设置（根据对应语言声明）
-option go_package = "github.com/clin211/grpc/user/v1;userv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 option java_package = "com.example.user.v1";
 option java_outer_classname = "UserProtos";
 

@@ -1,7 +1,7 @@
 syntax = "proto3"; // 指定使用 Protocol Buffers v3 语法
 
 // 生成的 Go 代码的包路径，"helloworld_grpc/helloworld" 代表 Go 包的导入路径
-option go_package = "helloworld_grpc/helloworld";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 package helloworld; // 定义 proto 的包名，影响 Go 代码中的 package 名称
 

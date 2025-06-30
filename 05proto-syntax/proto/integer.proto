@@ -1,8 +1,9 @@
+// integer.proto - 定义整数类型的消息
 syntax = "proto3";
 
 package integer.v1;
 
-option go_package = "github.com/clin211/grpc/user/v1;intgerv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message NumberTypes {
   // 变长编码整数 - 适用于较小的正数

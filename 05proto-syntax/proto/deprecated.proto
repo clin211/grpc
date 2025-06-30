@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package deprecated.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;deprecatedv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 enum APIVersion {
   API_VERSION_UNSPECIFIED = 0;

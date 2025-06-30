@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package systemconfigration.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;systemconfigrationv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 // 配置管理系统
 message SystemConfiguration {

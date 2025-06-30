@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package string.v1;
 
-option go_package = "github.com/clin211/grpc/user/v1;stringv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message UserProfile {
   string username = 1;             // 用户名，UTF-8 字符串

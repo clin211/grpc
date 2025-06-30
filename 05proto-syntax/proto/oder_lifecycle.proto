@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package orderlifeclycle.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;orderlifeclyclev1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 enum OrderLifecycle {
   ORDER_LIFECYCLE_UNSPECIFIED = 0;

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package oneof.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;oneofv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message OneofExample {
   // 普通字段

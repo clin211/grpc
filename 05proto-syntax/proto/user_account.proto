@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package useraccount.v1;
 
-option go_package = "github.com/clin211/grpc/user/v1;useraccountv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message UserAccount {
   // Singular 字段 - 总是有值（或默认值）

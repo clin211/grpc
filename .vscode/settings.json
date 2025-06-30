@@ -3,6 +3,7 @@
         "APIROOT",
         "clientv",
         "codegen",
+        "integerv",
         "mvccpb",
         "oneofs",
         "protoc"

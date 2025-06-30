@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package any.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;anyv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 import "google/protobuf/any.proto";
 

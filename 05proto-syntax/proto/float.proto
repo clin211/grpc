@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package float.v1;
 
-option go_package = "github.com/clin211/grpc/user/v1;floatv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message GeographicLocation {
   // 使用 double 提供更高精度的地理坐标

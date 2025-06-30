@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package repeated.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;repeatedv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message BasicRepeatedExample {
   // 标量类型的 repeated 字段

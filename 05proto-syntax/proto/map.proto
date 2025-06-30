@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package map.v1;
 
-option go_package = "github.com/clin211/grpc/proto/v1;mapv1";
+option go_package = "github.com/clin211/grpc/proto/v1;protov1";
 
 message MapExample {
   // 基本语法：map<key_type, value_type> map_name = field_number;
