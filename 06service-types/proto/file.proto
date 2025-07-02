@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package file;
+
+option go_package = "github.com/clin211/grpc/service-types;stv1";
+
+// 文件块消息
+message FileChunk {
+  string file_id = 1;           // 文件唯一标识
+  string filename = 2;          // 原始文件名
+  int32 chunk_number = 3;       // 块序号（从0开始）
+  int32 total_chunks = 4;       // 总块数
+  bytes data = 5;               // 块数据
+  int32 chunk_size = 6;         // 当前块大小
+  bool is_last = 7;             // 是否为最后一块
+  string file_hash = 8;         // 文件MD5哈希（可选，用于校验）
+}
+
+// 文件上传响应
+message FileUploadResponse {
+  bool success = 1;             // 上传是否成功
+  string message = 2;           // 响应消息
+  string file_path = 3;         // 服务端文件路径
+  int64 file_size = 4;          // 文件总大小
+  string file_id = 5;           // 文件ID
+  int32 chunks_received = 6;    // 实际接收的块数
+  double upload_time_seconds = 7; // 上传耗时（秒）
+}
+
+// 文件服务定义
+service FileService {
+  // 分块文件上传（客户端流式 RPC）
+  rpc UploadFile(stream FileChunk) returns (FileUploadResponse) {}
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "github.com/clin211/grpc/service-types;stv1";
+
+// 聊天消息
+message ChatMessage {
+  string message_id = 1;        // 消息唯一标识
+  string user_id = 2;           // 发送用户ID
+  string username = 3;          // 用户名
+  string content = 4;           // 消息内容
+  int64 timestamp = 5;          // 时间戳
+  MessageType type = 6;         // 消息类型
+  string room_id = 7;           // 聊天室ID（可选，支持多房间）
+}
+
+// 消息类型枚举
+enum MessageType {
+  TEXT = 0;           // 普通文本消息
+  USER_JOIN = 1;      // 用户加入通知
+  USER_LEAVE = 2;     // 用户离开通知
+  SYSTEM = 3;         // 系统消息
+}
+
+// 聊天服务定义
+service ChatService {
+  // 聊天室双向流式通信
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage) {}
+}

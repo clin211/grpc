@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package stock;
+
+option go_package = "github.com/clin211/grpc/service-types;stv1";
+
+// 股票订阅请求
+message StockSubscribeRequest {
+  repeated string symbols = 1;     // 股票代码列表，如 ["AAPL", "GOOGL", "TSLA"]
+  string client_id = 2;           // 客户端标识
+}
+
+// 股票价格更新消息
+message StockPriceUpdate {
+  string symbol = 1;              // 股票代码
+  double current_price = 2;       // 当前价格
+  double change_amount = 3;       // 变化金额
+  double change_percent = 4;      // 变化百分比
+  int64 timestamp = 5;            // 时间戳（Unix时间）
+  int64 volume = 6;               // 成交量
+}
+
+// 股票服务定义
+service StockService {
+  // 订阅股票价格推送（服务端流式 RPC）
+  rpc SubscribeStockPrice(StockSubscribeRequest) returns (stream StockPriceUpdate) {}
+}

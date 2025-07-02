@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/clin211/grpc/service-types;stv1";
+
+// 请求消息
+message UserRequest {
+  string user_id = 1;
+}
+
+// 响应消息
+message UserResponse {
+  string user_id = 1;
+  string username = 2;
+  string email = 3;
+  int32 age = 4;
+}
+
+// 用户服务定义
+service UserService {
+  // 获取用户信息
+  rpc GetUserInfo (UserRequest) returns (UserResponse) {}
+}
