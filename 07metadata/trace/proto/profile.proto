@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/clin211/grpc/metadata;stv1";
+
+// 用户资料服务定义
+service ProfileService {
+  // 获取用户资料
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+
+  // 更新用户资料
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
+
+  // 获取用户偏好设置
+  rpc GetPreferences(GetPreferencesRequest) returns (GetPreferencesResponse);
+}
+
+// 获取用户资料请求
+message GetProfileRequest {
+  string user_id = 1;
+}
+
+// 用户资料信息
+message ProfileInfo {
+  string user_id = 1;
+  string nickname = 2;
+  string avatar_url = 3;
+  string bio = 4;
+  string location = 5;
+  string website = 6;
+  repeated string interests = 7;
+  string created_at = 8;
+  string updated_at = 9;
+}
+
+// 获取用户资料响应
+message GetProfileResponse {
+  ProfileInfo profile = 1;
+  string message = 2;
+}
+
+// 更新用户资料请求
+message UpdateProfileRequest {
+  string user_id = 1;
+  ProfileInfo profile = 2;
+}
+
+// 更新用户资料响应
+message UpdateProfileResponse {
+  bool success = 1;
+  string message = 2;
+  string updated_at = 3;
+}
+
+// 获取用户偏好设置请求
+message GetPreferencesRequest {
+  string user_id = 1;
+}
+
+// 用户偏好设置
+message UserPreferences {
+  string language = 1;
+  string timezone = 2;
+  string theme = 3;
+  bool email_notifications = 4;
+  bool push_notifications = 5;
+  string currency = 6;
+}
+
+// 获取用户偏好设置响应
+message GetPreferencesResponse {
+  UserPreferences preferences = 1;
+  string message = 2;
+}

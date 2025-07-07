@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/clin211/grpc/metadata;stv1";
+
+// 用户服务定义
+service UserService {
+  // 获取用户信息
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+
+  // 创建用户
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+
+  // 用户登录
+  rpc Login(LoginRequest) returns (LoginResponse);
+}
+
+// 获取用户请求
+message GetUserRequest {
+  string user_id = 1;
+}
+
+// 用户资料信息
+message ProfileInfo {
+  string user_id = 1;
+  string nickname = 2;
+  string avatar_url = 3;
+  string bio = 4;
+  string location = 5;
+  repeated string interests = 6;
+}
+
+// 获取用户响应
+message GetUserResponse {
+  string user_id = 1;
+  string username = 2;
+  string email = 3;
+  string created_at = 4;
+  ProfileInfo profile = 5; // 用户资料信息（可选）
+}
+
+// 创建用户请求
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+// 创建用户响应
+message CreateUserResponse {
+  string user_id = 1;
+  string message = 2;
+}
+
+// 登录请求
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+// 登录响应
+message LoginResponse {
+  string token = 1;
+  string user_id = 2;
+  string message = 3;
+}
